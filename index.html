@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Kỷ Niệm - Ảnh Album | Lưu giữ khoảnh khắc</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app-container">
+    <div class="hero">
+        <h1>📸 Góc Kỷ Niệm</h1>
+        <p>Lưu giữ những khoảnh khắc đáng nhớ — Album ảnh không bao giờ mất</p>
+    </div>
+
+    <div class="toolbar">
+        <div class="album-actions">
+            <button id="createAlbumBtn" class="btn btn-primary">✨ Tạo Album mới</button>
+            <button id="manageAlbumsBtn" class="btn btn-outline">📁 Quản lý Album</button>
+        </div>
+        <div class="stats">
+            📊 <span id="albumCount">0</span> album · 🖼️ <span id="photoCount">0</span> ảnh
+        </div>
+    </div>
+
+    <!-- Thêm ảnh mới -->
+    <div class="upload-panel">
+        <div class="upload-form">
+            <div class="form-group" style="flex:2">
+                <label>📷 Tải ảnh lên (hỗ trợ nhiều ảnh cùng lúc)</label>
+                <input type="file" id="fileInput" accept="image/jpeg,image/png,image/jpg,image/gif,image/webp" multiple>
+            </div>
+            <div class="form-group">
+                <label>🖼️ Tiêu đề (tùy chọn)</label>
+                <input type="text" id="photoTitle" placeholder="VD: Biển chiều, phố cổ...">
+            </div>
+            <div class="form-group">
+                <label>📁 Chọn Album</label>
+                <select id="albumSelectUpload"></select>
+            </div>
+            <div class="form-group">
+                <button id="uploadBtn" class="btn btn-primary">➕ Đăng ảnh</button>
+            </div>
+        </div>
+        <div id="uploadMessage" class="upload-message"></div>
+    </div>
+
+    <!-- Danh sách album tabs -->
+    <div class="albums-header">
+        <h3>📚 Danh sách Album của bạn</h3>
+        <button id="expandAllBtn" class="btn-small">📂 Mở rộng tất cả</button>
+    </div>
+    <div id="albumTabsContainer" class="album-tabs"></div>
+
+    <!-- Hiển thị ảnh theo album -->
+    <div id="photosContainer" class="photo-grid"></div>
+</div>
+
+<!-- Modal quản lý album -->
+<div id="manageAlbumsModal" class="modal">
+    <div class="modal-content modal-large">
+        <div class="modal-header">
+            <h2>📁 Quản lý Album</h2>
+            <span class="close-modal close-manage">&times;</span>
+        </div>
+        <div class="manage-albums-content">
+            <div class="create-album-section">
+                <input type="text" id="newAlbumNameInput" placeholder="Nhập tên album mới..." class="album-input">
+                <button id="createAlbumFromModalBtn" class="btn btn-primary">➕ Tạo Album</button>
+            </div>
+            <div id="albumsList" class="albums-list"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal chỉnh sửa album -->
+<div id="editAlbumModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>✏️ Chỉnh sửa Album</h2>
+            <span class="close-modal close-edit">&times;</span>
+        </div>
+        <div class="edit-album-content">
+            <input type="text" id="editAlbumNameInput" placeholder="Tên album" class="album-input">
+            <div class="modal-buttons">
+                <button id="saveEditAlbumBtn" class="btn btn-primary">💾 Lưu thay đổi</button>
+                <button id="cancelEditBtn" class="btn btn-outline">Hủy</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal preview ảnh -->
+<div id="imageModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal close-image">&times;</span>
+        <img id="modalImage" class="modal-img" alt="preview">
+        <div class="modal-image-info" id="modalImageInfo"></div>
+    </div>
+</div>
+
+<footer>
+    <p>✨ Ảnh của bạn được lưu trữ an toàn trong trình duyệt. Tạo nhiều album, thêm nhiều ảnh, không lo mất dữ liệu.</p>
+    <p>💡 Mẹo: Bạn có thể tạo không giới hạn số lượng album và ảnh!</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

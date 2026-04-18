@@ -1,0 +1,545 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, 'Segoe UI', 'Poppins', 'Roboto', sans-serif;
+}
+
+body {
+    background: linear-gradient(145deg, #f7f0e6 0%, #e9dbcf 100%);
+    min-height: 100vh;
+    padding: 2rem 1.5rem;
+}
+
+/* container chính */
+.app-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* header cảm xúc */
+.hero {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.hero h1 {
+    font-size: 2.8rem;
+    background: linear-gradient(135deg, #b87333, #8b5a2b);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    letter-spacing: -0.5px;
+    text-shadow: 2px 2px 12px rgba(0,0,0,0.05);
+}
+
+.hero p {
+    color: #5a3e2b;
+    font-weight: 500;
+    margin-top: 8px;
+    font-style: italic;
+}
+
+/* thanh công cụ chính */
+.toolbar {
+    background: rgba(255, 250, 240, 0.85);
+    backdrop-filter: blur(8px);
+    border-radius: 56px;
+    padding: 0.8rem 1.8rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    border: 1px solid rgba(210, 180, 140, 0.5);
+}
+
+.album-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.stats {
+    background: rgba(193, 123, 66, 0.15);
+    padding: 0.5rem 1.2rem;
+    border-radius: 40px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #6b4c2c;
+}
+
+.btn {
+    border: none;
+    background: white;
+    padding: 0.6rem 1.4rem;
+    border-radius: 40px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: 0.2s;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-primary {
+    background: #c17b42;
+    color: white;
+    box-shadow: 0 4px 10px rgba(193,123,66,0.3);
+}
+
+.btn-primary:hover {
+    background: #a5612e;
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid #c9ab85;
+    color: #6b4c2c;
+}
+
+.btn-outline:hover {
+    background: #f7ede3;
+    border-color: #b87a42;
+}
+
+.btn-danger {
+    background: #ffe0db;
+    color: #bc5a3c;
+}
+
+.btn-danger:hover {
+    background: #ffcdc3;
+}
+
+.btn-small {
+    background: transparent;
+    border: 1px solid #c9ab85;
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-small:hover {
+    background: #f7ede3;
+}
+
+/* form thêm ảnh */
+.upload-panel {
+    background: #fffaf5;
+    border-radius: 2rem;
+    padding: 1.2rem 1.8rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+    border: 1px solid #f0e2d4;
+    transition: all 0.2s;
+}
+
+.upload-form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 1.2rem;
+}
+
+.form-group {
+    flex: 1;
+    min-width: 150px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #8b694a;
+    margin-bottom: 5px;
+}
+
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 28px;
+    border: 1px solid #e2cfbc;
+    background: white;
+    font-size: 0.9rem;
+    outline: none;
+}
+
+.form-group input:focus, .form-group select:focus {
+    border-color: #c17b42;
+}
+
+.upload-message {
+    font-size: 0.8rem;
+    margin-top: 12px;
+    color: #bc784b;
+    text-align: center;
+}
+
+/* albums header */
+.albums-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 0 0.5rem;
+}
+
+.albums-header h3 {
+    color: #6b4c2c;
+    font-size: 1.2rem;
+}
+
+/* album tabs */
+.album-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 1.8rem;
+    border-bottom: 2px solid #e9cfb5;
+    padding-bottom: 12px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.album-tab {
+    background: #f5ede5;
+    padding: 8px 20px;
+    border-radius: 40px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+}
+
+.album-tab:hover {
+    background: #ecdccb;
+    transform: translateY(-2px);
+}
+
+.album-tab.active {
+    background: #c17b42;
+    color: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.album-tab .album-count {
+    font-size: 0.7rem;
+    background: rgba(0,0,0,0.1);
+    padding: 2px 6px;
+    border-radius: 20px;
+    margin-left: 5px;
+}
+
+.album-tab.active .album-count {
+    background: rgba(255,255,240,0.3);
+}
+
+.album-tab .delete-album-btn,
+.album-tab .edit-album-btn {
+    background: rgba(0,0,0,0.1);
+    border-radius: 30px;
+    width: 22px;
+    height: 22px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    cursor: pointer;
+    color: #4a2a1a;
+    transition: 0.2s;
+}
+
+.album-tab .edit-album-btn:hover,
+.album-tab .delete-album-btn:hover {
+    transform: scale(1.1);
+}
+
+.album-tab.active .delete-album-btn,
+.album-tab.active .edit-album-btn {
+    background: rgba(255,255,240,0.3);
+    color: white;
+}
+
+/* lưới ảnh */
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.6rem;
+}
+
+.photo-card {
+    background: white;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.photo-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 28px rgba(0,0,0,0.15);
+}
+
+.photo-img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    background: #f3ede7;
+    display: block;
+}
+
+.photo-info {
+    padding: 0.9rem;
+}
+
+.photo-title {
+    font-weight: 700;
+    color: #4f3a28;
+    margin-bottom: 4px;
+    word-break: break-word;
+}
+
+.photo-date {
+    font-size: 0.7rem;
+    color: #b48a64;
+    margin-bottom: 8px;
+}
+
+.photo-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    color: #ac8e6e;
+    transition: 0.1s;
+}
+
+.icon-btn:hover {
+    color: #c5552c;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 4rem;
+    background: #fffaf2;
+    border-radius: 2rem;
+    color: #b28b65;
+}
+
+/* modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.2s ease;
+}
+
+.modal-content {
+    max-width: 90vw;
+    max-height: 90vh;
+    background: #fffaf5;
+    border-radius: 28px;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.modal-large {
+    max-width: 600px;
+    width: 90%;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 1.5rem;
+    background: #c17b42;
+    color: white;
+}
+
+.modal-header h2 {
+    font-size: 1.3rem;
+}
+
+.close-modal {
+    font-size: 28px;
+    cursor: pointer;
+    transition: 0.2s;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.close-modal:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+.modal-img {
+    max-width: 100%;
+    max-height: 70vh;
+    display: block;
+    margin: 0 auto;
+}
+
+.modal-image-info {
+    padding: 1rem;
+    text-align: center;
+    background: #f5ede5;
+    color: #6b4c2c;
+}
+
+/* manage albums */
+.manage-albums-content,
+.edit-album-content {
+    padding: 1.5rem;
+}
+
+.create-album-section {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.album-input {
+    flex: 1;
+    padding: 10px 14px;
+    border-radius: 28px;
+    border: 1px solid #e2cfbc;
+    font-size: 0.9rem;
+    outline: none;
+}
+
+.album-input:focus {
+    border-color: #c17b42;
+}
+
+.albums-list {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.album-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem;
+    margin-bottom: 0.5rem;
+    background: #f5ede5;
+    border-radius: 16px;
+    transition: 0.2s;
+}
+
+.album-item:hover {
+    background: #ecdccb;
+}
+
+.album-info {
+    flex: 1;
+}
+
+.album-name {
+    font-weight: 600;
+    color: #4f3a28;
+    font-size: 1rem;
+}
+
+.album-stats {
+    font-size: 0.75rem;
+    color: #b48a64;
+    margin-top: 4px;
+}
+
+.album-actions-manage {
+    display: flex;
+    gap: 8px;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    justify-content: flex-end;
+}
+
+footer {
+    margin-top: 3rem;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #aa8666;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+@media (max-width: 650px) {
+    body {
+        padding: 1rem;
+    }
+
+    .toolbar {
+        flex-direction: column;
+        align-items: stretch;
+        border-radius: 32px;
+    }
+
+    .upload-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .photo-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 1rem;
+    }
+
+    .album-tab {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+    }
+
+    .create-album-section {
+        flex-direction: column;
+    }
+}
